@@ -1,0 +1,31 @@
+# 生产环境打包配置
+appId: com.example.template-electron
+productName: Template Electron
+directories:
+  output: release/prod
+files:
+  - dist/**/*
+  - package.json
+mac:
+  category: public.app-category.utilities
+  target:
+    - dmg
+    - zip
+  # icon: assets/icon.icns  # 可选：生产环境图标（需要时取消注释并添加图标文件）
+  hardenedRuntime: true
+  gatekeeperAssess: false
+win:
+  target:
+    - nsis
+    - portable
+  icon: assets/icon.ico  # 可选：生产环境图标
+linux:
+  target:
+    - AppImage
+    - deb
+  icon: assets/icon.png  # 可选：生产环境图标
+
+# 生产环境特定配置
+extraMetadata:
+  name: template-electron
+

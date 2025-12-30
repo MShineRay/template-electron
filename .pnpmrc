@@ -1,0 +1,15 @@
+# pnpm 配置文件
+# 确保 Electron 正确安装
+
+# 使用 hoisted 链接器（关键配置）
+node-linker=hoisted
+
+# 提升所有依赖
+shamefully-hoist=true
+
+# 确保 Electron 相关包被提升
+public-hoist-pattern[]=*electron*
+
+# 允许运行构建脚本
+enable-pre-post-scripts=true
+

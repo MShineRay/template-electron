@@ -1,1 +1,14 @@
-npm test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 运行 lint-staged（如果已安装）或直接运行测试
+# 注意：测试可能比较慢，可以根据需要选择是否在提交前运行
+
+# 可选：运行测试（取消注释以启用）
+# pnpm test
+
+# 可选：运行 lint（如果已配置 ESLint）
+# pnpm lint
+
+# 可选：运行类型检查
+# pnpm run build:main

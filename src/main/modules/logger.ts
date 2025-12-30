@@ -13,7 +13,7 @@ export class Logger {
     log.transports.console.level = 'debug';
     
     // 在开发环境下，日志也输出到控制台
-    if (!app.isPackaged) {
+    if (app && !app.isPackaged) {
       log.transports.console.format = '[{h}:{i}:{s}.{ms}][{level}]{text}';
     }
   }

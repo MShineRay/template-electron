@@ -17,6 +17,7 @@
 - [TypeScript vs JavaScript](./typescript-vs-javascript.md) - TypeScript 与 JavaScript 选择指南
 - [项目全面分析](./project-analysis.md) - 项目设计合理性、冗余、错误和缺失功能分析
 - [准备提交到 GitHub](./prepare-github.md) - GitHub 仓库准备和提交指南
+- [Git 提交规范](./git-commit-convention.md) - Git 提交消息规范和限制工具配置
 
 ## 快速开始
 

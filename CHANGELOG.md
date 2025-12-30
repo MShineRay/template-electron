@@ -31,5 +31,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 窗口状态持久化
 - 安全的 IPC 通信（Context Isolation）
 
-[0.0.1]: https://github.com/your-username/template-electron/releases/tag/v0.0.1
+[0.0.1]: https://github.com/MShineRay/template-electron/releases/tag/v0.0.1
 

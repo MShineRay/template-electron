@@ -73,12 +73,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/template-electron.git"
+    "url": "https://github.com/MShineRay/template-electron.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/template-electron/issues"
+    "url": "https://github.com/MShineRay/template-electron/issues"
   },
-  "homepage": "https://github.com/your-username/template-electron#readme",
+  "homepage": "https://github.com/MShineRay/template-electron#readme",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@vitest/coverage-v8": "^1.0.4",

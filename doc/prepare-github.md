@@ -14,28 +14,14 @@
 - [x] 添加 Issue 和 PR 模板
 - [x] 更新 `package.json` 仓库信息
 
+### ✅ 已完成
+- [x] 仓库 URL 已更新为：`https://github.com/MShineRay/template-electron.git`
+- [x] CHANGELOG.md 中的 Release 链接已更新
+- [x] README.md 已添加仓库地址和徽章
+
 ### ⚠️ 需要手动完成
 
-#### 1. 更新仓库 URL
-在 `package.json` 中，将以下占位符替换为你的实际 GitHub 仓库地址：
-```json
-"repository": {
-  "type": "git",
-  "url": "https://github.com/your-username/template-electron.git"
-},
-"bugs": {
-  "url": "https://github.com/your-username/template-electron/issues"
-},
-"homepage": "https://github.com/your-username/template-electron#readme"
-```
-
-#### 2. 更新 CHANGELOG.md
-在 `CHANGELOG.md` 中，将以下占位符替换为你的实际仓库地址：
-```markdown
-[0.0.1]: https://github.com/your-username/template-electron/releases/tag/v0.0.1
-```
-
-#### 3. 清理构建产物
+#### 1. 清理构建产物
 确保以下目录和文件不会被提交：
 - `dist/` - 构建输出目录
 - `release/` - 打包输出目录
@@ -62,8 +48,8 @@ git add .
 # 创建初始提交
 git commit -m "chore: initial commit v0.0.1"
 
-# 添加远程仓库（替换为你的实际仓库地址）
-git remote add origin https://github.com/your-username/template-electron.git
+# 添加远程仓库
+git remote add origin https://github.com/MShineRay/template-electron.git
 
 # 创建主分支（如果还没有）
 git branch -M main

@@ -1,6 +1,12 @@
 # Electron 基础项目模板
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-0.0.1-green.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg)
+
 这是一个功能完整的 Electron 基础项目模板，包含了常用的功能模块封装。
+
+**仓库地址**：https://github.com/MShineRay/template-electron
 
 ## 功能特性
 

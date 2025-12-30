@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference lib="dom" />
 
 /**
  * 环境变量类型定义

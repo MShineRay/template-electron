@@ -7,6 +7,13 @@ export default defineConfig({
     outDir: '../../dist/renderer',
     emptyOutDir: true,
   },
+  esbuild: {
+    tsconfigRaw: {
+      compilerOptions: {
+        lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src/renderer'),

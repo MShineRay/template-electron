@@ -41,4 +41,3 @@ module.exports = {
   skipQuestions: ['footer'],
   subjectLimit: 100,
 };
-

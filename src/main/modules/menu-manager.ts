@@ -1,6 +1,7 @@
 import { Menu, MenuItem, app, shell, dialog, MenuItemConstructorOptions } from 'electron';
-import { WindowManager } from './window-manager';
+
 import { Logger } from './logger';
+import { WindowManager } from './window-manager';
 
 export class MenuManager {
   private windowManager: WindowManager;
@@ -135,10 +136,7 @@ export class MenuManager {
           { role: 'minimize' as const, label: '最小化' },
           { role: 'close' as const, label: '关闭' },
           ...(isMac
-            ? [
-                { type: 'separator' as const },
-                { role: 'front' as const, label: '前置全部窗口' },
-              ]
+            ? [{ type: 'separator' as const }, { role: 'front' as const, label: '前置全部窗口' }]
             : []),
         ] as MenuItemConstructorOptions[],
       },
@@ -170,4 +168,3 @@ export class MenuManager {
     return template;
   }
 }
-

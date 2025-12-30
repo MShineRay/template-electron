@@ -1,8 +1,11 @@
-import { BrowserWindow, screen } from 'electron';
 import path from 'path';
-import { Logger } from './logger';
-import { ConfigManager } from './config-manager';
+
+import { BrowserWindow, screen } from 'electron';
+
 import { env } from '../utils/env';
+
+import { ConfigManager } from './config-manager';
+import { Logger } from './logger';
 
 export class WindowManager {
   private mainWindow: BrowserWindow | null = null;
@@ -52,20 +55,22 @@ export class WindowManager {
 
     // 加载页面
     const isDev = env.isDevelopment || process.argv.includes('--dev');
-    
+
     if (isDev) {
       // 开发模式：加载 Vite 开发服务器
       const devURL = `http://${env.devHost}:${env.devPort}`;
       this.mainWindow.loadURL(devURL).catch((error: Error) => {
         this.logger.error('加载开发服务器失败:', error);
         // 如果开发服务器还没启动，显示错误页面
-        this.mainWindow?.loadURL('data:text/html,<h1>开发服务器未启动</h1><p>请先运行 <code>pnpm run dev</code></p>');
+        this.mainWindow?.loadURL(
+          'data:text/html,<h1>开发服务器未启动</h1><p>请先运行 <code>pnpm run dev</code></p>'
+        );
       });
       // 根据环境变量决定是否打开 DevTools
       if (env.enableDevTools) {
         this.mainWindow.webContents.openDevTools();
       }
-      
+
       // 开发模式下，监听 Vite HMR 更新
       this.mainWindow.webContents.on('did-fail-load', () => {
         // 如果加载失败，等待一段时间后重试
@@ -149,4 +154,3 @@ export class WindowManager {
     }
   }
 }
-

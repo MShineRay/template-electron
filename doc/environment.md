@@ -14,12 +14,14 @@
 - `.env.example` - 环境变量示例文件（应提交到版本控制，仅作为参考）
 
 **加载顺序**（后加载的会覆盖先加载的）：
+
 1. `.env`（基础配置）
 2. `.env.[mode]`（环境特定配置，如 `.env.development`）
 3. `.env.local`（本地覆盖）
 4. `.env.[mode].local`（环境特定的本地覆盖）
 
 **构建信息**：
+
 - `.env.development` 和 `.env.production` 文件末尾会自动包含构建信息（版本号、构建时间等）
 - 构建信息由版本管理脚本（`scripts/version.js`）自动生成和更新
 - 构建信息部分请勿手动修改
@@ -134,9 +136,9 @@ const apiURL = env.apiBaseURL;
 ```typescript
 import { env } from './utils/env';
 
-console.log(env.appName);        // 应用名称
-console.log(env.apiBaseURL);     // API 基础 URL
-console.log(env.isDevelopment);  // 是否为开发环境
+console.log(env.appName); // 应用名称
+console.log(env.apiBaseURL); // API 基础 URL
+console.log(env.isDevelopment); // 是否为开发环境
 ```
 
 ### 主进程 (`src/main/utils/env.ts`)
@@ -242,4 +244,3 @@ NODE_ENV=production pnpm run build
 1. 确保已安装 `dotenv` 依赖
 2. 检查 `src/main/utils/env.ts` 是否正确加载
 3. 确保在应用启动前加载环境变量
-

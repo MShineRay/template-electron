@@ -35,6 +35,7 @@
 ### 作用域 (scope)
 
 可选，表示提交影响的范围。例如：
+
 - `feat(window)`: 窗口相关功能
 - `fix(ipc)`: IPC 通信相关修复
 - `docs(readme)`: README 文档更新
@@ -49,12 +50,14 @@
 ### 正文 (body)
 
 可选，用于详细说明：
+
 - 使用祈使句，现在时态
 - 说明代码变更的动机和与之前行为的对比
 
 ### 页脚 (footer)
 
 可选，用于：
+
 - **BREAKING CHANGE**: 不兼容的变更
 - **Closes**: 关闭的 Issue（如 `Closes #123`）
 
@@ -120,6 +123,7 @@ Git hooks 管理工具，用于在提交时自动运行检查。
 **配置文件**: `.husky/`
 
 **Hooks**:
+
 - `pre-commit`: 提交前检查（代码格式、lint 等）
 - `commit-msg`: 提交消息格式检查
 
@@ -155,6 +159,7 @@ npx cz
 ### Q: 提交被拒绝怎么办？
 
 A: 检查提交消息格式：
+
 1. 确保包含类型（type）
 2. 确保 subject 清晰描述变更
 3. 确保符合格式：`<type>(<scope>): <subject>`
@@ -200,4 +205,3 @@ git commit --no-verify -m "紧急修复"
 ---
 
 **最后更新**：2025-12-30
-

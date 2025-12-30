@@ -39,6 +39,7 @@ npm version major
 ```
 
 这会自动：
+
 - 更新 `package.json` 中的版本号
 - 创建 git commit
 - 创建 git tag
@@ -69,7 +70,7 @@ pnpm version major
 
 ```yaml
 version: 1.0.0
-buildVersion: 20251230001  # 构建号
+buildVersion: 20251230001 # 构建号
 ```
 
 ### 方法 2：使用环境变量
@@ -103,7 +104,7 @@ pnpm run dist:prod
 
 ```json
 {
-  "version": "0.1.0"  // 开发版本
+  "version": "0.1.0" // 开发版本
 }
 ```
 
@@ -111,7 +112,7 @@ pnpm run dist:prod
 
 ```json
 {
-  "version": "1.0.0-beta.1"  // 使用预发布版本
+  "version": "1.0.0-beta.1" // 使用预发布版本
 }
 ```
 
@@ -119,7 +120,7 @@ pnpm run dist:prod
 
 ```json
 {
-  "version": "1.0.0"  // 正式版本
+  "version": "1.0.0" // 正式版本
 }
 ```
 
@@ -128,6 +129,7 @@ pnpm run dist:prod
 ### 错误：Invalid version
 
 **错误信息**：
+
 ```
 Invalid version: "1.0.0.20251230001"
 ```
@@ -135,6 +137,7 @@ Invalid version: "1.0.0.20251230001"
 **原因**：版本号格式不符合 SemVer 规范
 
 **解决方案**：
+
 1. 将版本号改为 `major.minor.patch` 格式
 2. 如果需要构建号，使用 `buildVersion` 配置
 
@@ -143,6 +146,7 @@ Invalid version: "1.0.0.20251230001"
 **原因**：版本号包含非法字符
 
 **解决方案**：
+
 - 移除 `v` 前缀（如 `v1.0.0` → `1.0.0`）
 - 移除特殊字符
 - 确保格式为 `major.minor.patch`
@@ -187,7 +191,11 @@ const packageJsonPath = path.join(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 // 获取构建号（日期时间戳）
-const buildNumber = new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, '').replace('T', '');
+const buildNumber = new Date()
+  .toISOString()
+  .replace(/[-:]/g, '')
+  .replace(/\..+/, '')
+  .replace('T', '');
 
 // 更新版本号
 const [major, minor, patch] = packageJson.version.split('.');
@@ -214,4 +222,3 @@ process.env.BUILD_NUMBER = buildNumber;
 
 - [语义化版本规范](https://semver.org/)
 - [Electron Builder 版本配置](https://www.electron.build/configuration/configuration)
-

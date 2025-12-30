@@ -11,24 +11,28 @@
 ## 功能特性
 
 ### 1. 窗口管理 (WindowManager)
+
 - ✅ 创建和管理主窗口
 - ✅ 窗口状态保存和恢复（位置、大小、最大化状态）
 - ✅ 窗口控制（最小化、最大化、全屏、关闭）
 - ✅ 窗口居中显示
 
 ### 2. 菜单栏 (MenuManager)
+
 - ✅ 完整的应用菜单（文件、编辑、视图、窗口、帮助）
 - ✅ macOS 和 Windows/Linux 平台适配
 - ✅ 快捷键支持
 - ✅ 文件对话框（打开、保存）
 
 ### 3. 系统托盘 (TrayManager)
+
 - ✅ 系统托盘图标
 - ✅ 托盘菜单（显示/隐藏窗口、退出）
 - ✅ 点击托盘图标显示/隐藏窗口
 - ✅ 跨平台支持
 
 ### 4. IPC 通信 (IpcManager)
+
 - ✅ 安全的 IPC 通信封装
 - ✅ 窗口控制 API
 - ✅ 配置管理 API
@@ -36,12 +40,14 @@
 - ✅ Context Isolation 和 Preload 脚本
 
 ### 5. 配置管理 (ConfigManager)
+
 - ✅ 基于 electron-store 的持久化配置
 - ✅ 配置的读取、设置、删除
 - ✅ 配置重置功能
 - ✅ 默认配置支持
 
 ### 6. 日志记录 (Logger)
+
 - ✅ 基于 electron-log 的日志系统
 - ✅ 文件日志（自动轮转，最大 5MB）
 - ✅ 控制台日志输出
@@ -130,6 +136,7 @@ pnpm run dist:prod          # 生产环境（版本：1.0.0）
 ```
 
 > 💡 **提示**：
+>
 > - 在 Mac 上可以打包 Windows 和 Linux 安装包，Windows 需要安装 Wine。查看 [部署指南](./doc/deployment.md#跨平台打包) 了解详情。
 > - 不同环境会自动生成不同的版本号。查看 [版本号管理策略](./doc/version-management.md) 了解详情。
 
@@ -184,6 +191,7 @@ pnpm run dist:prod          # 生产环境（版本：1.0.0）
 ## 包管理器
 
 项目默认配置为使用 **pnpm**，具有以下优势：
+
 - 🚀 更快的安装速度
 - 💾 节省磁盘空间（使用硬链接和符号链接）
 - 🔒 更严格的依赖管理
@@ -211,4 +219,3 @@ corepack prepare pnpm@latest --activate
 ## 许可证
 
 MIT
-

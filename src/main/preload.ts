@@ -38,8 +38,8 @@ declare global {
         getState: () => Promise<any>;
       };
       config: {
-        get: (key: string) => Promise<any>;
-        set: (key: string, value: any) => Promise<void>;
+        get: (_key: string) => Promise<any>;
+        set: (_key: string, _value: any) => Promise<void>;
         getAll: () => Promise<any>;
         reset: () => Promise<void>;
       };
@@ -50,4 +50,3 @@ declare global {
     };
   }
 }
-

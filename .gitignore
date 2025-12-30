@@ -28,3 +28,9 @@ coverage/
 # husky (保留 .husky 目录，但忽略内部临时文件)
 .husky/_
 
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache
+

@@ -5,6 +5,7 @@
 ## 前置检查清单
 
 ### ✅ 已完成
+
 - [x] 版本号设置为 `0.0.1`
 - [x] 创建 `LICENSE` 文件（MIT）
 - [x] 创建 `CHANGELOG.md`
@@ -15,6 +16,7 @@
 - [x] 更新 `package.json` 仓库信息
 
 ### ✅ 已完成
+
 - [x] 仓库 URL 已更新为：`https://github.com/MShineRay/template-electron.git`
 - [x] CHANGELOG.md 中的 Release 链接已更新
 - [x] README.md 已添加仓库地址和徽章
@@ -22,14 +24,18 @@
 ### ⚠️ 需要手动完成
 
 #### 1. 清理构建产物
+
 确保以下目录和文件不会被提交：
+
 - `dist/` - 构建输出目录
 - `release/` - 打包输出目录
 - `node_modules/` - 依赖目录
 - `.env.development` 和 `.env.production` 中的构建信息部分（会自动生成）
 
 #### 4. 添加作者信息（可选）
+
 在 `package.json` 中添加作者信息：
+
 ```json
 "author": "Your Name <your.email@example.com>"
 ```
@@ -96,7 +102,9 @@ git push -u origin main
 ## 后续步骤
 
 ### 添加徽章（可选）
+
 在 `README.md` 顶部添加徽章，例如：
+
 ```markdown
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-0.0.1-green.svg)
@@ -104,11 +112,14 @@ git push -u origin main
 ```
 
 ### 配置 GitHub Pages（可选）
+
 如果需要托管文档：
+
 1. 在仓库设置中启用 GitHub Pages
 2. 选择文档源（例如 `main` 分支的 `doc` 目录）
 
 ### 设置分支保护规则（推荐）
+
 1. 在仓库设置中，进入 "Branches"
 2. 添加分支保护规则：
    - 保护 `main` 分支
@@ -136,4 +147,3 @@ git push -u origin main
 ---
 
 **最后更新**：2025-12-30
-

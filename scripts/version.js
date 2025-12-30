@@ -3,7 +3,7 @@
 /**
  * 版本号管理脚本
  * 根据不同环境生成不同的版本号
- * 
+ *
  * 使用方法：
  *   node scripts/version.js dev     # 开发环境版本
  *   node scripts/version.js test     # 测试环境版本
@@ -27,10 +27,10 @@ const baseVersion = currentVersion.split('-')[0]; // 提取 major.minor.patch �
  */
 function generateVersion(environment) {
   const [major, minor, patch] = baseVersion.split('.').map(Number);
-  
+
   switch (environment) {
     case 'dev':
-    case 'development':
+    case 'development': {
       // 开发环境：使用构建号（日期时间戳，使用本地时间）
       // 格式：1.0.0-dev.20251230143000（符合 SemVer 预发布版本规范）
       const now = new Date();
@@ -45,9 +45,10 @@ function generateVersion(environment) {
         version: `${major}.${minor}.${patch}-dev.${buildNumber}`,
         buildVersion: buildNumber,
       };
-    
+    }
+
     case 'test':
-    case 'testing':
+    case 'testing': {
       // 测试环境：使用预发布版本
       // 格式：1.0.0-beta.1
       // 可以从环境变量或文件中读取测试版本号
@@ -56,7 +57,8 @@ function generateVersion(environment) {
         version: `${major}.${minor}.${patch}-beta.${testNumber}`,
         buildVersion: testNumber,
       };
-    
+    }
+
     case 'prod':
     case 'production':
       // 生产环境：使用正式版本号
@@ -64,7 +66,7 @@ function generateVersion(environment) {
         version: baseVersion,
         buildVersion: undefined, // 生产环境不使用构建号
       };
-    
+
     default:
       return {
         version: baseVersion,
@@ -78,11 +80,7 @@ function generateVersion(environment) {
  */
 function updatePackageVersion(version) {
   packageJson.version = version;
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(packageJson, null, 2) + '\n',
-    'utf8'
-  );
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
   console.log(`✅ 版本号已更新为: ${version}`);
 }
 
@@ -92,17 +90,20 @@ function updatePackageVersion(version) {
  */
 function generateEnvFile(versionInfo, environment) {
   const now = new Date();
-  const localTime = now.toLocaleString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  }).replace(/\//g, '-').replace(/, /g, ' ');
-  
+  const localTime = now
+    .toLocaleString('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    })
+    .replace(/\//g, '-')
+    .replace(/, /g, ' ');
+
   // 构建版本信息内容
   const versionContent = `# ============================================
 # 构建信息（自动生成，请勿手动修改）
@@ -113,23 +114,24 @@ BUILD_TIME=${now.toISOString()}
 BUILD_TIME_LOCAL=${localTime}
 BUILD_ENV=${environment}
 `;
-  
+
   // 确定目标 .env 文件
   const envFileName = environment === 'prod' ? '.env.production' : '.env.development';
   const envPath = path.join(__dirname, `../${envFileName}`);
-  
+
   // 读取现有内容
   let existingContent = '';
   try {
     existingContent = fs.readFileSync(envPath, 'utf8');
-  } catch (error) {
+  } catch {
     // 文件不存在，使用空内容
   }
-  
+
   // 移除旧的构建信息部分（如果存在）
-  const buildInfoRegex = /# ============================================\n# 构建信息.*?BUILD_ENV=.*?\n/s;
+  const buildInfoRegex =
+    /# ============================================\n# 构建信息.*?BUILD_ENV=.*?\n/s;
   const cleanedContent = existingContent.replace(buildInfoRegex, '').trim();
-  
+
   // 追加新的构建信息
   const newContent = cleanedContent + '\n\n' + versionContent;
   fs.writeFileSync(envPath, newContent, 'utf8');
@@ -152,4 +154,3 @@ console.log(`📌 版本: ${versionInfo.version}`);
 if (versionInfo.buildVersion) {
   console.log(`🔢 构建号: ${versionInfo.buildVersion}`);
 }
-

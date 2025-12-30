@@ -35,6 +35,14 @@ describe('Electron API', () => {
     vi.clearAllMocks();
   });
 
+  // consoleSpy 用于未来扩展，暂时保留
+  const _consoleSpy = {
+    info: vi.spyOn(console, 'info').mockImplementation(() => {}),
+    error: vi.spyOn(console, 'error').mockImplementation(() => {}),
+  };
+  // 避免未使用变量警告
+  void _consoleSpy;
+
   describe('Window API', () => {
     it('should minimize window', async () => {
       await window.electronAPI.window.minimize();
@@ -103,4 +111,3 @@ describe('Electron API', () => {
     });
   });
 });
-

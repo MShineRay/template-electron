@@ -1,7 +1,9 @@
-import { Tray, Menu, nativeImage, app } from 'electron';
 import path from 'path';
-import { WindowManager } from './window-manager';
+
+import { Tray, Menu, nativeImage, app } from 'electron';
+
 import { Logger } from './logger';
+import { WindowManager } from './window-manager';
 
 export class TrayManager {
   private tray: Tray | null = null;
@@ -111,4 +113,3 @@ export class TrayManager {
     }
   }
 }
-

@@ -14,6 +14,7 @@ npm run build
 ```
 
 构建输出：
+
 - 主进程：`dist/main.js`
 - 渲染进程：`dist/renderer/`
 
@@ -37,11 +38,13 @@ npm run dist
 ### 配置文件说明
 
 #### 开发环境配置 (`electron-builder.dev.yml`)
+
 - 应用名称包含 "(Dev)" 后缀
 - 输出到 `release/dev/` 目录
 - 适合内部测试和开发使用
 
 #### 生产环境配置 (`electron-builder.prod.yml`)
+
 - 标准应用名称
 - 输出到 `release/prod/` 目录
 - 适合正式发布和分发
@@ -182,7 +185,7 @@ npm version major  # 1.0.0 -> 2.0.0
 
 ```yaml
 version: 1.0.0
-buildVersion: 20251230001  # 构建号（可选）
+buildVersion: 20251230001 # 构建号（可选）
 ```
 
 或者使用环境变量：
@@ -284,6 +287,7 @@ pnpm run dist:win:prod
 - 使用 CI/CD 服务（GitHub Actions、GitLab CI）在 Windows 环境中打包
 
 **注意事项**：
+
 - Wine 可能不稳定，建议在 Windows 系统上打包以获得最佳结果
 - 某些 Windows 特定功能可能无法在 Mac 上测试
 
@@ -302,6 +306,7 @@ pnpm run dist:linux:prod
 ```
 
 **注意事项**：
+
 - Linux 打包通常不需要额外工具
 - 但某些 Linux 特定功能可能无法在 Mac 上测试
 
@@ -349,6 +354,7 @@ jobs:
 **Q: 在 Mac 上打包 Windows 失败？**
 
 A: 需要安装 Wine：
+
 ```bash
 brew install --cask wine-stable
 ```
@@ -356,6 +362,7 @@ brew install --cask wine-stable
 **Q: Wine 安装失败？**
 
 A: 可以：
+
 1. 使用 Windows 虚拟机
 2. 使用 CI/CD 服务
 3. 在 Windows 系统上打包
@@ -363,6 +370,6 @@ A: 可以：
 **Q: 打包速度慢？**
 
 A: 跨平台打包需要下载对应平台的 Electron 二进制文件，首次打包会较慢。
+
 - 在 Windows 上打包 Windows 版本
 - 使用 CI/CD 进行自动化打包
-

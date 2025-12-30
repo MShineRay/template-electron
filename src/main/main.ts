@@ -1,23 +1,19 @@
 import { app, BrowserWindow } from 'electron';
-import { WindowManager } from './modules/window-manager';
+
+import { ConfigManager } from './modules/config-manager';
+import { IpcManager } from './modules/ipc-manager';
+import { Logger } from './modules/logger';
 import { MenuManager } from './modules/menu-manager';
 import { TrayManager } from './modules/tray-manager';
-import { IpcManager } from './modules/ipc-manager';
-import { ConfigManager } from './modules/config-manager';
-import { Logger } from './modules/logger';
+import { WindowManager } from './modules/window-manager';
 
 // 开发模式下启用热重载
 if (process.env.NODE_ENV === 'development' || process.argv.includes('--dev')) {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require('electron-reloader')(module, {
       debug: true,
       watchRenderer: false, // Vite 已经处理了渲染进程的 HMR
-      ignore: [
-        /node_modules/,
-        /dist/,
-        /\.git/,
-      ],
+      ignore: [/node_modules/, /dist/, /\.git/],
     });
   } catch {
     // electron-reloader 可能在生产环境中不可用，忽略错误
@@ -91,4 +87,3 @@ application.initialize().catch((error) => {
   logger.error('应用启动失败:', error);
   process.exit(1);
 });
-

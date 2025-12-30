@@ -31,4 +31,3 @@ linux:
 # 测试环境特定配置
 extraMetadata:
   name: template-electron-test
-

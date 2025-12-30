@@ -47,12 +47,14 @@ enable-pre-post-scripts=true
 即使配置了 `enable-pre-post-scripts=true`，pnpm 有时仍可能跳过 Electron 的 postinstall 脚本。手动在 `postinstall` 中运行 `install.js` 可以确保二进制文件总是被下载。
 
 **优点**：
+
 - 使用类似 npm/yarn 的扁平化结构
 - 完全兼容 Electron
 - 确保二进制文件总是被下载
 - 不需要修改代码
 
 **缺点**：
+
 - 失去了 pnpm 的磁盘空间优势
 - 依赖结构类似 npm/yarn
 
@@ -83,6 +85,7 @@ pnpm run postinstall
 ### 配置文件说明
 
 **`.npmrc`**：
+
 ```ini
 node-linker=hoisted          # 使用 hoisted 链接器（关键）
 shamefully-hoist=true        # 提升所有依赖
@@ -91,6 +94,7 @@ enable-pre-post-scripts=true # 允许运行构建脚本
 ```
 
 **`.pnpmrc`**：
+
 ```ini
 node-linker=hoisted
 shamefully-hoist=true
@@ -122,6 +126,7 @@ pnpm run start
 ### Q: 使用 hoisted 链接器会失去 pnpm 的优势吗？
 
 **A**: 会部分失去磁盘空间优势，但仍然保留：
+
 - 更快的安装速度
 - 更严格的依赖管理
 - 更好的 monorepo 支持
@@ -130,6 +135,7 @@ pnpm run start
 ### Q: 可以同时支持 yarn 和 pnpm 吗？
 
 **A**: 可以，但需要确保：
+
 - 使用 hoisted 链接器（pnpm）
 - 两种包管理器都能正确安装 Electron
 - 锁定文件（yarn.lock 和 pnpm-lock.yaml）可以共存
@@ -150,4 +156,3 @@ pnpm run start
 - [pnpm 官方文档 - node-linker](https://pnpm.io/npmrc#node-linker)
 - [Electron 安装问题排查](https://www.electronjs.org/docs/latest/tutorial/installation)
 - [pnpm 与 Electron 兼容性讨论](https://github.com/pnpm/pnpm/issues)
-

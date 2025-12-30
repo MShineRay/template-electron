@@ -7,6 +7,7 @@
 ### macOS 安装包
 
 #### DMG 文件（推荐）
+
 - **文件扩展名**：`.dmg`
 - **文件名示例**：
   - `Template Electron-1.0.0-arm64.dmg`（生产环境）
@@ -15,6 +16,7 @@
 - **使用方法**：双击打开，将应用拖拽到 Applications 文件夹
 
 #### ZIP 文件
+
 - **文件扩展名**：`.zip`
 - **文件名示例**：
   - `Template Electron-1.0.0-arm64-mac.zip`（生产环境）
@@ -23,12 +25,14 @@
 - **使用方法**：解压后运行其中的 `.app` 文件
 
 #### 架构标识
+
 - `arm64`：Apple Silicon (M1/M2/M3 等)
 - `x64`：Intel 芯片 Mac
 
 ### Windows 安装包
 
 #### NSIS 安装程序（推荐）
+
 - **文件扩展名**：`.exe`
 - **文件名示例**：
   - `Template Electron Setup 1.0.0.exe`（生产环境）
@@ -37,6 +41,7 @@
 - **使用方法**：双击运行安装向导
 
 #### 便携版（Portable）
+
 - **文件扩展名**：`.exe`
 - **文件名示例**：
   - `Template Electron 1.0.0.exe`（生产环境）
@@ -47,6 +52,7 @@
 ### Linux 安装包
 
 #### AppImage
+
 - **文件扩展名**：`.AppImage`
 - **文件名示例**：
   - `Template Electron-1.0.0.AppImage`（生产环境）
@@ -59,6 +65,7 @@
   ```
 
 #### DEB 包
+
 - **文件扩展名**：`.deb`
 - **文件名示例**：
   - `template-electron_1.0.0_amd64.deb`（生产环境）
@@ -72,12 +79,14 @@
 ## 文件命名规则
 
 ### 生产环境
+
 ```
 Template Electron-{版本}-{架构}.{扩展名}
 Template Electron Setup {版本}.exe
 ```
 
 ### 开发环境
+
 ```
 Template Electron (Dev)-{版本}-{架构}.{扩展名}
 Template Electron (Dev) Setup {版本}.exe
@@ -94,6 +103,7 @@ Template Electron (Dev) Setup {版本}.exe
 ## 快速识别
 
 ### 按文件扩展名
+
 - **`.dmg`** → macOS 安装包（推荐）
 - **`.zip`** → macOS 压缩包
 - **`.exe`** → Windows 安装包或便携版
@@ -101,6 +111,7 @@ Template Electron (Dev) Setup {版本}.exe
 - **`.deb`** → Linux Debian/Ubuntu 安装包
 
 ### 按文件名关键词
+
 - 包含 `Setup` → Windows 安装程序
 - 包含 `arm64` 或 `x64` → macOS（架构标识）
 - 包含 `amd64` → Linux（架构标识）
@@ -120,14 +131,17 @@ release/dev/
 ## 推荐使用
 
 ### macOS
+
 - **推荐**：`.dmg` 文件（标准安装包格式）
 - **备选**：`.zip` 文件（便携使用）
 
 ### Windows
+
 - **推荐**：`Setup.exe`（安装程序，适合正式分发）
 - **备选**：便携版 `.exe`（无需安装，适合测试）
 
 ### Linux
+
 - **推荐**：`.AppImage`（通用格式，无需安装）
 - **备选**：`.deb`（适合 Debian/Ubuntu 系统）
 
@@ -146,4 +160,3 @@ release/dev/
    - macOS DMG：通常 100-150MB
    - Windows Setup：通常 100-150MB
    - Linux AppImage：通常 100-150MB
-

@@ -36,13 +36,10 @@ async function loadWindowState() {
   try {
     const state = await window.electronAPI.window.getState();
     if (state) {
-      const stateText = [
-        state.isMaximized && '最大化',
-        state.isFullScreen && '全屏',
-        state.isMinimized && '最小化',
-      ]
-        .filter(Boolean)
-        .join(' | ') || '正常';
+      const stateText =
+        [state.isMaximized && '最大化', state.isFullScreen && '全屏', state.isMinimized && '最小化']
+          .filter(Boolean)
+          .join(' | ') || '正常';
       document.getElementById('window-state')!.textContent = stateText;
     }
   } catch (error) {
@@ -104,4 +101,3 @@ function updateStatus(message: string) {
     }, 2000);
   }
 }
-

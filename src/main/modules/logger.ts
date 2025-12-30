@@ -1,6 +1,5 @@
-import log from 'electron-log';
-import path from 'path';
 import { app } from 'electron';
+import log from 'electron-log';
 
 export class Logger {
   constructor() {
@@ -8,10 +7,10 @@ export class Logger {
     log.transports.file.level = 'info';
     log.transports.file.maxSize = 5 * 1024 * 1024; // 5MB
     log.transports.file.format = '[{y}-{m}-{d} {h}:{i}:{s}.{ms}][{level}]{text}';
-    
+
     // 控制台输出
     log.transports.console.level = 'debug';
-    
+
     // 在开发环境下，日志也输出到控制台
     if (app && !app.isPackaged) {
       log.transports.console.format = '[{h}:{i}:{s}.{ms}][{level}]{text}';
@@ -34,4 +33,3 @@ export class Logger {
     log.debug(message, ...args);
   }
 }
-

@@ -17,8 +17,8 @@ export interface Response<T = any> {
 }
 
 export type RequestInterceptor = (config: RequestConfig) => RequestConfig | Promise<RequestConfig>;
-export type ResponseInterceptor = <T>(response: Response<T>) => Response<T> | Promise<Response<T>>;
-export type ErrorInterceptor = (error: Error) => Promise<never> | never;
+export type ResponseInterceptor = <T>(_response: Response<T>) => Response<T> | Promise<Response<T>>;
+export type ErrorInterceptor = (_error: Error) => Promise<never> | never;
 
 export class HttpClient {
   private baseURL: string;
@@ -29,12 +29,14 @@ export class HttpClient {
   private errorInterceptors: ErrorInterceptor[] = [];
   private logger?: Logger;
 
-  constructor(options: {
-    baseURL?: string;
-    timeout?: number;
-    headers?: Record<string, string>;
-    logger?: Logger;
-  } = {}) {
+  constructor(
+    options: {
+      baseURL?: string;
+      timeout?: number;
+      headers?: Record<string, string>;
+      logger?: Logger;
+    } = {}
+  ) {
     this.baseURL = options.baseURL || '';
     this.timeout = options.timeout || 30000;
     this.defaultHeaders = {
@@ -92,15 +94,15 @@ export class HttpClient {
    */
   private async handleError(error: Error): Promise<never> {
     this.logger?.error('HTTP 请求错误:', error);
-    
+
     for (const interceptor of this.errorInterceptors) {
       try {
         await interceptor(error);
-      } catch (e) {
+      } catch {
         // 错误拦截器中的错误不应该阻止错误传播
       }
     }
-    
+
     throw error;
   }
 
@@ -109,7 +111,7 @@ export class HttpClient {
    */
   private buildURL(url: string, params?: Record<string, any>): string {
     const fullURL = url.startsWith('http') ? url : `${this.baseURL}${url}`;
-    
+
     if (!params || Object.keys(params).length === 0) {
       return fullURL;
     }
@@ -136,7 +138,9 @@ export class HttpClient {
       const url = this.buildURL(finalConfig.url, finalConfig.params);
 
       // 准备请求选项
-      const requestOptions: RequestInit = {
+      // 主进程使用 node-fetch，类型定义可能不同
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const requestOptions: any = {
         method: finalConfig.method || 'GET',
         headers: {
           ...this.defaultHeaders,
@@ -223,29 +227,43 @@ export class HttpClient {
   /**
    * POST 请求
    */
-  post<T = any>(url: string, data?: any, config?: Omit<RequestConfig, 'url' | 'method' | 'data'>): Promise<Response<T>> {
+  post<T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<RequestConfig, 'url' | 'method' | 'data'>
+  ): Promise<Response<T>> {
     return this.request<T>({ ...config, url, method: 'POST', data });
   }
 
   /**
    * PUT 请求
    */
-  put<T = any>(url: string, data?: any, config?: Omit<RequestConfig, 'url' | 'method' | 'data'>): Promise<Response<T>> {
+  put<T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<RequestConfig, 'url' | 'method' | 'data'>
+  ): Promise<Response<T>> {
     return this.request<T>({ ...config, url, method: 'PUT', data });
   }
 
   /**
    * DELETE 请求
    */
-  delete<T = any>(url: string, config?: Omit<RequestConfig, 'url' | 'method'>): Promise<Response<T>> {
+  delete<T = any>(
+    url: string,
+    config?: Omit<RequestConfig, 'url' | 'method'>
+  ): Promise<Response<T>> {
     return this.request<T>({ ...config, url, method: 'DELETE' });
   }
 
   /**
    * PATCH 请求
    */
-  patch<T = any>(url: string, data?: any, config?: Omit<RequestConfig, 'url' | 'method' | 'data'>): Promise<Response<T>> {
+  patch<T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<RequestConfig, 'url' | 'method' | 'data'>
+  ): Promise<Response<T>> {
     return this.request<T>({ ...config, url, method: 'PATCH', data });
   }
 }
-

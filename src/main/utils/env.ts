@@ -3,8 +3,9 @@
  * 使用 dotenv 加载环境变量
  */
 
-import dotenv from 'dotenv';
 import path from 'path';
+
+import dotenv from 'dotenv';
 
 // 在 app 可用之前，先尝试从项目根目录加载
 const projectRoot = process.cwd();
@@ -15,9 +16,7 @@ dotenv.config({
 });
 
 // 再加载环境特定配置（会覆盖 .env 中的同名变量）
-const envFile = process.env.NODE_ENV === 'production' 
-  ? '.env.production' 
-  : '.env.development';
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
 dotenv.config({
   path: path.resolve(projectRoot, envFile),
   override: true, // 允许覆盖基础配置
@@ -89,4 +88,3 @@ export const env = {
   isDevelopment: process.env.NODE_ENV !== 'production',
   isProduction: process.env.NODE_ENV === 'production',
 };
-

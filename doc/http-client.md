@@ -5,10 +5,12 @@
 ## 概述
 
 项目提供了两个 HTTP 客户端实现：
+
 - **主进程 HTTP 客户端** (`src/main/modules/http-client.ts`) - 在主进程中使用
 - **渲染进程 HTTP 客户端** (`src/renderer/utils/http-client.ts`) - 在渲染进程中使用
 
 两个客户端功能相同，都支持：
+
 - ✅ 请求/响应拦截器
 - ✅ 错误处理
 - ✅ 超时控制
@@ -158,12 +160,12 @@ httpClient.patch<T>(url: string, data?: any, config?: RequestConfig): Promise<Re
 
 ```typescript
 interface RequestConfig {
-  url: string;                    // 请求 URL
+  url: string; // 请求 URL
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   headers?: Record<string, string>; // 请求头
-  params?: Record<string, any>;    // URL 参数
-  data?: any;                      // 请求体
-  timeout?: number;                // 超时时间（毫秒）
+  params?: Record<string, any>; // URL 参数
+  data?: any; // 请求体
+  timeout?: number; // 超时时间（毫秒）
 }
 ```
 
@@ -171,9 +173,9 @@ interface RequestConfig {
 
 ```typescript
 interface Response<T> {
-  data: T;                        // 响应数据
-  status: number;                 // HTTP 状态码
-  statusText: string;            // 状态文本
+  data: T; // 响应数据
+  status: number; // HTTP 状态码
+  statusText: string; // 状态文本
   headers: Record<string, string>; // 响应头
 }
 ```
@@ -233,14 +235,13 @@ export interface ApiResponse<T> {
 }
 
 export const userApi = {
-  getUser: (id: string) => 
+  getUser: (id: string) =>
     httpClient.get<ApiResponse<User>>(`/api/users/${id}`),
-  
-  getUsers: (params?: { page?: number }) => 
+
+  getUsers: (params?: { page?: number }) =>
     httpClient.get<ApiResponse<User[]>>('/api/users', { params }),
-  
-  createUser: (data: Omit<User, 'id'>) => 
+
+  createUser: (data: Omit<User, 'id'>) =>
     httpClient.post<ApiResponse<User>>('/api/users', data),
 };
 ```
-

@@ -16,14 +16,13 @@ win:
   target:
     - nsis
     - portable
-  icon: assets/icon.ico  # 可选：开发环境图标
+  icon: assets/icon.ico # 可选：开发环境图标
 linux:
   target:
     - AppImage
     - deb
-  icon: assets/icon.png  # 可选：开发环境图标
+  icon: assets/icon.png # 可选：开发环境图标
 
 # 开发环境特定配置
 extraMetadata:
   name: template-electron-dev
-

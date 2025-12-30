@@ -1,4 +1,5 @@
 import Store from 'electron-store';
+
 import { Logger } from './logger';
 
 export interface AppConfig {
@@ -61,4 +62,3 @@ export class ConfigManager {
     this.logger.debug(`配置已删除: ${String(key)}`);
   }
 }
-

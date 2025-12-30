@@ -14,6 +14,7 @@
 - **示例**：`1.0.0-dev.20251230143000`
 
 **特点**：
+
 - 每次打包都会生成新的版本号
 - 包含构建时间信息
 - 便于追踪开发版本
@@ -28,6 +29,7 @@
 - **示例**：`1.0.0-beta.1`、`1.0.0-beta.2`
 
 **特点**：
+
 - 版本号相对稳定
 - 便于测试团队追踪版本
 - 可以手动控制测试版本号
@@ -41,6 +43,7 @@
 - **无构建号**：保持版本号简洁
 
 **特点**：
+
 - 使用语义化版本号
 - 版本号需要手动更新
 - 适合正式发布
@@ -251,11 +254,11 @@ console.log('应用版本:', version);
 
 ## 版本号比较
 
-| 环境 | 版本号格式 | 示例 | 更新频率 |
-|------|----------|------|---------|
+| 环境 | 版本号格式               | 示例                       | 更新频率 |
+| ---- | ------------------------ | -------------------------- | -------- |
 | 开发 | `{base}-dev.{timestamp}` | `1.0.0-dev.20251230120000` | 每次打包 |
-| 测试 | `{base}-beta.{number}` | `1.0.0-beta.1` | 手动控制 |
-| 生产 | `{base}` | `1.0.0` | 手动更新 |
+| 测试 | `{base}-beta.{number}`   | `1.0.0-beta.1`             | 手动控制 |
+| 生产 | `{base}`                 | `1.0.0`                    | 手动更新 |
 
 ## 最佳实践
 
@@ -287,12 +290,12 @@ jobs:
     steps:
       - run: pnpm run version:dev
       - run: pnpm run dist:dev
-  
+
   build-test:
     steps:
       - run: pnpm run version:test
       - run: pnpm run dist:test
-  
+
   build-prod:
     steps:
       - run: npm version patch
@@ -305,6 +308,7 @@ jobs:
 ### Q: 如何查看当前版本号？
 
 A: 查看 `package.json` 中的 `version` 字段，或运行：
+
 ```bash
 node scripts/version.js dev
 ```
@@ -312,6 +316,7 @@ node scripts/version.js dev
 ### Q: 如何手动设置测试版本号？
 
 A: 使用环境变量：
+
 ```bash
 TEST_VERSION_NUMBER=5 pnpm run dist:test
 ```
@@ -323,4 +328,3 @@ A: 是的，`package.json` 中的版本号会提交。`.env.*.version` 文件已
 ### Q: 如何回退版本号？
 
 A: 使用 Git 回退 `package.json`，或手动编辑版本号。
-

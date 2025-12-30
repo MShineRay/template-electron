@@ -11,6 +11,7 @@
 ### 窗口控制 API
 
 #### `window.minimize()`
+
 最小化窗口。
 
 ```typescript
@@ -18,6 +19,7 @@ await window.electronAPI.window.minimize();
 ```
 
 #### `window.maximize()`
+
 最大化或还原窗口。
 
 ```typescript
@@ -25,6 +27,7 @@ await window.electronAPI.window.maximize();
 ```
 
 #### `window.close()`
+
 关闭窗口。
 
 ```typescript
@@ -32,6 +35,7 @@ await window.electronAPI.window.close();
 ```
 
 #### `window.toggleFullscreen()`
+
 切换全屏模式。
 
 ```typescript
@@ -39,6 +43,7 @@ await window.electronAPI.window.toggleFullscreen();
 ```
 
 #### `window.getState()`
+
 获取窗口状态。
 
 ```typescript
@@ -49,6 +54,7 @@ const state = await window.electronAPI.window.getState();
 ### 配置管理 API
 
 #### `config.get(key: string)`
+
 获取配置项。
 
 ```typescript
@@ -56,6 +62,7 @@ const theme = await window.electronAPI.config.get('theme');
 ```
 
 #### `config.set(key: string, value: any)`
+
 设置配置项。
 
 ```typescript
@@ -63,6 +70,7 @@ await window.electronAPI.config.set('theme', 'dark');
 ```
 
 #### `config.getAll()`
+
 获取所有配置。
 
 ```typescript
@@ -70,6 +78,7 @@ const allConfig = await window.electronAPI.config.getAll();
 ```
 
 #### `config.reset()`
+
 重置所有配置为默认值。
 
 ```typescript
@@ -79,6 +88,7 @@ await window.electronAPI.config.reset();
 ### 应用信息 API
 
 #### `app.getVersion()`
+
 获取应用版本。
 
 ```typescript
@@ -86,6 +96,7 @@ const version = await window.electronAPI.app.getVersion();
 ```
 
 #### `app.getName()`
+
 获取应用名称。
 
 ```typescript
@@ -134,4 +145,3 @@ logger.debug('调试日志');
 ## 类型定义
 
 所有 API 都有完整的 TypeScript 类型定义，可以在 IDE 中获得自动补全和类型检查。
-

@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+
 import { ConfigManager } from '../../../src/main/modules/config-manager';
 
 describe('ConfigManager', () => {
@@ -53,4 +54,3 @@ describe('ConfigManager', () => {
     expect(configManager.has('customKey')).toBe(false);
   });
 });
-

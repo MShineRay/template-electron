@@ -10,4 +10,3 @@
   "include": ["src/renderer/**/*"],
   "exclude": ["node_modules", "dist"]
 }
-

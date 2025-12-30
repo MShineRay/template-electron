@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1] - 2025-12-30
 
 ### Added
+
 - 初始项目模板
 - 窗口管理模块 (WindowManager)
 - 菜单栏管理模块 (MenuManager)
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 完整的项目文档
 
 ### Features
+
 - 支持热重载（主进程和渲染进程）
 - 支持跨平台打包（macOS、Windows、Linux）
 - 支持环境特定的版本号管理
@@ -32,4 +34,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 安全的 IPC 通信（Context Isolation）
 
 [0.0.1]: https://github.com/MShineRay/template-electron/releases/tag/v0.0.1
-

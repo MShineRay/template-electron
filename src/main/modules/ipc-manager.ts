@@ -1,18 +1,15 @@
-import { ipcMain, BrowserWindow } from 'electron';
-import { WindowManager } from './window-manager';
+import { ipcMain } from 'electron';
+
 import { ConfigManager } from './config-manager';
 import { Logger } from './logger';
+import { WindowManager } from './window-manager';
 
 export class IpcManager {
   private windowManager: WindowManager;
   private configManager: ConfigManager;
   private logger: Logger;
 
-  constructor(
-    windowManager: WindowManager,
-    configManager: ConfigManager,
-    logger: Logger
-  ) {
+  constructor(windowManager: WindowManager, configManager: ConfigManager, logger: Logger) {
     this.windowManager = windowManager;
     this.configManager = configManager;
     this.logger = logger;
@@ -91,17 +88,14 @@ export class IpcManager {
   private registerAppHandlers(): void {
     // 获取应用版本
     ipcMain.handle('app:get-version', () => {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { app } = require('electron');
       return app.getVersion();
     });
 
     // 获取应用名称
     ipcMain.handle('app:get-name', () => {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { app } = require('electron');
       return app.getName();
     });
   }
 }
-

@@ -1,23 +1,21 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+
 import { Logger } from '../../../src/main/modules/logger';
 
 describe('Logger', () => {
   let logger: Logger;
-  let consoleSpy: {
-    info: ReturnType<typeof vi.spyOn>;
-    error: ReturnType<typeof vi.spyOn>;
-    warn: ReturnType<typeof vi.spyOn>;
-    debug: ReturnType<typeof vi.spyOn>;
-  };
 
   beforeEach(() => {
     logger = new Logger();
-    consoleSpy = {
+    // consoleSpy 用于未来扩展，暂时保留但未使用
+    const _consoleSpy = {
       info: vi.spyOn(console, 'info').mockImplementation(() => {}),
       error: vi.spyOn(console, 'error').mockImplementation(() => {}),
       warn: vi.spyOn(console, 'warn').mockImplementation(() => {}),
       debug: vi.spyOn(console, 'debug').mockImplementation(() => {}),
     };
+    // 避免未使用变量警告
+    void _consoleSpy;
   });
 
   afterEach(() => {
@@ -49,4 +47,3 @@ describe('Logger', () => {
     expect(logger.debug).toBeDefined();
   });
 });
-

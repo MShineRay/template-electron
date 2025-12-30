@@ -53,9 +53,47 @@ template-electron/
 
 ### 代码规范
 
-- 使用 TypeScript 编写代码
-- 遵循 ESLint 规则
-- 使用 Prettier 格式化代码
+项目使用以下工具来保证代码质量：
+
+- **TypeScript**：类型安全的 JavaScript 超集
+- **ESLint**：代码质量检查工具
+- **Prettier**：代码格式化工具
+- **EditorConfig**：编辑器配置统一
+
+#### 运行代码检查
+
+```bash
+# 检查代码问题
+pnpm run lint
+
+# 自动修复可修复的问题
+pnpm run lint:fix
+```
+
+#### 格式化代码
+
+```bash
+# 格式化所有代码
+pnpm run format
+
+# 检查代码格式（不修改文件）
+pnpm run format:check
+```
+
+#### 编辑器集成
+
+**VS Code** 推荐安装以下插件：
+
+- ESLint
+- Prettier - Code formatter
+- EditorConfig for VS Code
+
+安装后，保存文件时会自动格式化和检查代码。
+
+**其他编辑器**：
+
+- 项目已配置 `.editorconfig`，支持 EditorConfig 的编辑器会自动应用配置
+- 可以配置保存时运行 Prettier 格式化
 
 ### 热重载
 
@@ -89,4 +127,3 @@ template-electron/
 ### 其他问题
 
 更多问题请查看 [故障排除文档](./troubleshooting.md)。
-
